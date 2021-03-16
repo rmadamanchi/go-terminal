@@ -84,7 +84,7 @@ func (p *printer) WithBold(s string) *printer {
 }
 
 func (p *printer) StartBold() *printer {
-	fmt.Print("\u001b[1m")
+	fmt.Print("\x1b[1m")
 	return p
 }
 
@@ -93,7 +93,7 @@ func (p *printer) WithUnderline(s string) *printer {
 }
 
 func (p *printer) StartUnderline() *printer {
-	fmt.Print("\u001b[4m")
+	fmt.Print("\x1b[4m")
 	return p
 }
 
@@ -102,7 +102,7 @@ func (p *printer) WithReversed(s string) *printer {
 }
 
 func (p *printer) StartReversed() *printer {
-	fmt.Print("\u001b[7m")
+	fmt.Print("\x1b[7m")
 	return p
 }
 

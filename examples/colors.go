@@ -76,5 +76,5 @@ func main() {
 	fmt.Println()
 	fmt.Println()
 
-	p.StartBgColor(terminal.Cyan).StartColor(terminal.Red).StartBold().StartUnderline().StartReversed().Print("test").Reset()
+	p.StartBgColor(terminal.Cyan).StartColor(terminal.Red).StartBold().StartUnderline().Print("cyan-bg-red-fg-bold-underline").Reset()
 }
