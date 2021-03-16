@@ -1,4 +1,4 @@
-package ansi
+package terminal
 
 import (
 	"fmt"
@@ -49,6 +49,60 @@ func (p *printer) WithColor256(code int, s string) *printer {
 
 func (p *printer) StartColor256(code int) *printer {
 	fmt.Print("\x1b[38;5;" + strconv.Itoa(code) + "m")
+	return p
+}
+
+func (p *printer) WithBgColor(c Color, s string) *printer {
+	return p.StartBgColor(c).Print(s).Reset()
+}
+
+func (p *printer) StartBgColor(c Color) *printer {
+	fmt.Print("\x1b[" + strconv.Itoa(int(c+10)) + "m")
+	return p
+}
+
+func (p *printer) WithBgColorBold(c Color, s string) *printer {
+	return p.StartBgColorBold(c).Print(s).Reset()
+}
+
+func (p *printer) StartBgColorBold(c Color) *printer {
+	fmt.Print("\x1b[" + strconv.Itoa(int(c+10)) + ";1m")
+	return p
+}
+
+func (p *printer) WithBgColor256(code int, s string) *printer {
+	return p.StartBgColor256(code).Print(s).Reset()
+}
+
+func (p *printer) StartBgColor256(code int) *printer {
+	fmt.Print("\x1b[48;5;" + strconv.Itoa(code) + "m")
+	return p
+}
+
+func (p *printer) WithBold(s string) *printer {
+	return p.StartBold().Print(s).Reset()
+}
+
+func (p *printer) StartBold() *printer {
+	fmt.Print("\u001b[1m")
+	return p
+}
+
+func (p *printer) WithUnderline(s string) *printer {
+	return p.StartUnderline().Print(s).Reset()
+}
+
+func (p *printer) StartUnderline() *printer {
+	fmt.Print("\u001b[4m")
+	return p
+}
+
+func (p *printer) WithReversed(s string) *printer {
+	return p.StartReversed().Print(s).Reset()
+}
+
+func (p *printer) StartReversed() *printer {
+	fmt.Print("\u001b[7m")
 	return p
 }
 
